@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.pavelfatin.typometer.ui.ProgressDialog">
+  <grid id="cbd77" binding="contentPane" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="48" y="54" width="436" height="156"/>
+    </constraints>
+    <properties/>
+    <border type="empty">
+      <size top="14" left="14" bottom="14" right="14"/>
+    </border>
+    <children>
+      <component id="86241" class="javax.swing.JProgressBar" binding="myProgressBar">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="8" right="10" weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="5723f" class="javax.swing.JButton" binding="myButton">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="8" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="&amp;Cancel"/>
+        </properties>
+      </component>
+      <component id="ba951" class="javax.swing.JLabel" binding="myPercent">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="30" height="-1"/>
+          </grid>
+          <gridbag top="0" left="0" bottom="8" right="10" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="100%"/>
+        </properties>
+      </component>
+      <component id="d76c1" class="javax.swing.JLabel" binding="myHeader">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="5" right="0" weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Header"/>
+        </properties>
+      </component>
+      <component id="e6515" class="javax.swing.JLabel" binding="myFooter">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Footer"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

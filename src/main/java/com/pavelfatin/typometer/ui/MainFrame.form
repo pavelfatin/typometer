@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.pavelfatin.typometer.ui.MainFrame">
+  <grid id="27dc6" binding="myComponent" layout-manager="BorderLayout" hgap="0" vgap="10">
+    <constraints>
+      <xy x="20" y="20" width="659" height="523"/>
+    </constraints>
+    <properties/>
+    <border type="empty">
+      <size top="4" left="4" bottom="4" right="4"/>
+    </border>
+    <children>
+      <grid id="75d7b" layout-manager="BorderLayout" hgap="0" vgap="10">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="2febb" binding="myCentralPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="South"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="62c3f" class="javax.swing.JButton" binding="myBenchmarkButton">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <text value="&amp;Benchmark"/>
+                  <toolTipText value="Start benchmarking process"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="e55a3" layout-manager="GridBagLayout">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="c6de7" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="5" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <labelFor value="563eb"/>
+                  <text value="&amp;Chars:"/>
+                </properties>
+              </component>
+              <component id="563eb" class="javax.swing.JSpinner" binding="myCount">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="22" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <toolTipText value="Total number of chars to type"/>
+                </properties>
+              </component>
+              <component id="19cbb" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="5" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <labelFor value="37d14"/>
+                  <text value="&amp;Delay, ms:"/>
+                </properties>
+              </component>
+              <component id="37d14" class="javax.swing.JSpinner" binding="myDelay">
+                <constraints>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <toolTipText value="Delay between key presses"/>
+                </properties>
+              </component>
+              <component id="7dbd1" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="0" right="5" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <labelFor value="b5541"/>
+                  <text value="&amp;Period:"/>
+                </properties>
+              </component>
+              <component id="b5541" class="javax.swing.JSpinner" binding="myPausePeriod">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="0" right="22" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <toolTipText value="Number of chars in each batch"/>
+                </properties>
+              </component>
+              <component id="fbbdc" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="0" right="5" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <labelFor value="3a74d"/>
+                  <text value="&amp;Length, ms:"/>
+                </properties>
+              </component>
+              <component id="3a74d" class="javax.swing.JSpinner" binding="myPauseLength">
+                <constraints>
+                  <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <toolTipText value="Delay between batches"/>
+                </properties>
+              </component>
+              <component id="5ae1b" class="javax.swing.JCheckBox" binding="myPausesEnabled">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <text value="Intermediate  pau&amp;ses"/>
+                  <toolTipText value="Periodical pauses between batches"/>
+                </properties>
+              </component>
+              <component id="6cae4" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="5" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <labelFor value="13f48"/>
+                  <text value="&amp;Title:"/>
+                </properties>
+              </component>
+              <component id="13f48" class="javax.swing.JTextField" binding="myTitle">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <columns value="10"/>
+                  <toolTipText value="Title of measurement"/>
+                </properties>
+              </component>
+              <component id="adcfa" class="javax.swing.JButton" binding="myResetButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="1.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <text value="&amp;Reset"/>
+                  <toolTipText value="Reset parameters to default values"/>
+                </properties>
+              </component>
+              <component id="df5dd" class="javax.swing.JSeparator">
+                <constraints>
+                  <grid row="1" column="4" row-span="2" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="8" bottom="0" right="8" weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <orientation value="1"/>
+                </properties>
+              </component>
+              <component id="e6c2" class="javax.swing.JCheckBox" binding="myAsync">
+                <constraints>
+                  <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="0" weightx="1.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <text value="&amp;Async"/>
+                  <toolTipText value="Don't wait for char to appear before pausing and typing a next one"/>
+                </properties>
+              </component>
+              <component id="ae4d4" class="javax.swing.JCheckBox" binding="myNative">
+                <constraints>
+                  <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="5" right="0" weightx="1.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <text value="&amp;Native API"/>
+                  <toolTipText value="Access screen via direct platform API calls (faster)"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <splitpane id="5cfba">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <orientation value="0"/>
+          <resizeWeight value="0.3"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="cf4fc" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <splitpane position="left"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <toolbar id="3d7e5" binding="myToolBar">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <floatable value="false"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </toolbar>
+              <scrollpane id="8f17d">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="33283" class="com.pavelfatin.typometer.ui.MutableTable" binding="myTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+          <grid id="29f82" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <splitpane position="right"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="3965e" class="com.pavelfatin.typometer.chart.ChartPanel" binding="myChartPanel">
+                <constraints border-constraint="Center"/>
+                <properties/>
+              </component>
+              <grid id="a94c5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+                <constraints border-constraint="North"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="7aebb" class="javax.swing.JLabel">
+                    <constraints/>
+                    <properties>
+                      <text value="Chart:"/>
+                    </properties>
+                  </component>
+                  <component id="c486" class="javax.swing.JRadioButton" binding="mySeriesButton">
+                    <constraints/>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="S&amp;eries (ms / n)"/>
+                    </properties>
+                  </component>
+                  <component id="a77ba" class="javax.swing.JRadioButton" binding="myDistributionButton">
+                    <constraints/>
+                    <properties>
+                      <selected value="false"/>
+                      <text value="D&amp;istribution (% / ms)"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </splitpane>
+    </children>
+  </grid>
+</form>

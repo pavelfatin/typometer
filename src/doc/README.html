@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  
+  body {
+    min-width: 200px;
+    max-width: 790px;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  
+  a {
+    color: #4078c0;
+    text-decoration: none;
+  }
+  
+  strong {
+    font-weight: 700;
+  }
+  
+  h1 {
+    padding-bottom: 0.3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+    margin: 0.67em 0;
+  }
+  
+  a:hover, a:active {
+    text-decoration: underline;
+  }
+  
+  h1, h2 {
+    margin-top: 1em;
+    margin-bottom: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  
+  h2 {
+    padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+  }
+  
+  ul, ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 0 0 2em;
+  }
+  
+  code {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 85%;
+    background-color: rgba(0,0,0,0.04);
+    margin: 0;
+    padding: 0.2em 0;
+  }
+  
+  body > :first-child {
+    margin-top: 0 !important;
+  }
+  
+  body > :last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  p, ul, ol {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  
+  code:before, code:after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+  }
+  
+  </style>
+</head>
+<body>
+<h1 id="typometer-readme">Typometer README</h1>
+<p>Typometer is a tool to measure and analyze visual latency of text / code editors.</p>
+<p>Editor latency is delay between an input event and a corresponding screen update, in particular case – delay between keystroke and character appearance. While there are many kinds of delays (caret movement, line editing, etc.), typing latency is a major predictor of editor usability.</p>
+<p>Check my article <a href="https://pavelfatin.com/typing-with-pleasure">Typing with pleasure</a> to learn more about editor latency and its effects on typing performance.</p>
+<p>Download: <a href="https://github.com/pavelfatin/typometer/releases/download/v1.0.0/typometer-1.0-bin.zip">typometer-1.0-bin.zip</a> (0.5 MB)</p>
+<p>Java 8 or latter is required to run the program. You can <a href="https://java.com/download">download Java</a> from the official site.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Cross-platform (Windows, Mac, Linux).</li>
+<li>Native API calls for faster screen access.</li>
+<li>Synchronous / asynchronous modes.</li>
+<li>Import / export of CSV data.</li>
+<li>Summary statistics, frequency distribution.</li>
+<li>Line / bar charts (including comparative ones).</li>
+<li>Chart image export (with legend).</li>
+</ul>
+<h2 id="principle">Principle</h2>
+<p>The program generates OS input events (key presses) and uses screen capture to fully automate the test process.</p>
+<p>At first, a predefined pattern (&quot;<code>.....</code>&quot;) is inserted in editor window in order to detect screen metrics (start position, step, background, etc.).</p>
+<p>After that, the program types a predefined number of &quot;<code>.</code>&quot; characters into the editor (with given periodicity), measuring delays between key presses and corresponding character drawings.</p>
+<p>To achieve high accuracy of measurement, only a single pixel is queried for each symbol. Moreover, the program can use fast native API (<a href="https://en.wikipedia.org/wiki/Windows_API">WinAPI</a>, <a href="https://en.wikipedia.org/wiki/Xlib">XLib</a>) calls on supported platforms, offering <a href="http://docs.oracle.com/javase/8/docs/api/java/awt/Robot.html">AWT robot</a> as a fallback option.</p>
+<p>There are two modes of testing available:</p>
+<ul>
+<li><strong>Synchronous</strong> – the program always waits for typed character to appear before making a pause and typing the next character. It's the most accurate method (because there's no threading overhead).</li>
+<li><strong>Asynchronous</strong> – the program types and recognizes characters independently. This method is slightly less accurate, but it's useful for testing rapid typing, when editor drawing might easily lag by multiple characters.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>To register only essential editor latency, text must be rendered directly to <a href="https://en.wikipedia.org/wiki/Framebuffer">framebuffer</a>, without intermediate image processing that might introduce additional delay. Prefer <a href="https://en.wikipedia.org/wiki/Stacking_window_manager">stacking window managers</a> to <a href="https://en.wikipedia.org/wiki/Compositing_window_manager">compositing window managers</a> for the testing purposes, particularly:</p>
+<ul>
+<li>Switch to Classic theme in Windows. <a href="https://en.wikipedia.org/wiki/Windows_Aero">Windows Aero</a> enforces internal <a href="https://en.wikipedia.org/wiki/Analog_television#Vertical_synchronization">vertical synchronization</a>, which leads to minimum 1 frame lag (about 17 ms for 60 Hz monitor refresh rate) and delay discretization.</li>
+<li>Use Linux distributive with lightweight <a href="https://en.wikipedia.org/wiki/Window_manager">window manager</a>, like <a href="http://lubuntu.net/">Lubuntu</a> (<a href="https://en.wikipedia.org/wiki/Openbox">Openbox</a>). Complex, 3D-based windows managers might substantially increase system rendering latency, for example, on my hardware, Ubuntu's <a href="https://en.wikipedia.org/wiki/Compiz">Compiz</a>, adds ~10 ms unavoidable lag.</li>
+</ul>
+<p>You may consider switching your machine in a particular hardware mode (power scheme, integrated / discrete graphics, etc.). In power save mode (and on battery), for example, editor responsiveness is usually much lower, so it's possible to detect significant performance glitches which are less frequently observable otherwise.</p>
+<p>Before you start benchmarking, make sure that other applications are not placing noticeable load on your system. It's up to you whether to &quot;warm up&quot; <a href="https://en.wikipedia.org/wiki/Virtual_machine#Process_virtual_machines">VM</a>-based editors, so they can pre-compile performance-critical parts of their code before proceeding.</p>
+<p>If possible, enable non-block caret (i. e. underline / vertical bar instead of rectangle) in editor. This might increase measurement accuracy.</p>
+<p>Typical action sequence is the following:</p>
+<ol type="1">
+<li>Specify a measurement title, like &quot;HTML in Vim&quot; <em>(optional, can be set later)</em>.</li>
+<li>Configure test parameters <em>(optional)</em>.</li>
+<li>Launch an editor, maximize its window.</li>
+<li>Open some data in the editor, for instance, a large HTML file <em>(optional)</em>.</li>
+<li>Place editor caret in desired context (like comment, etc.), at the end of short / empty line.</li>
+<li>Start benchmarking process in the program.</li>
+<li>After a corresponding prompt, transfer focus to the editor window.</li>
+<li>Wait for test completion, don't interfere with the process.</li>
+</ol>
+<p>You can always interrupt the testing process simply by transferring focus back to the program window.</p>
+<p>After test result is acquired, you may either analyze the singular data by itself or perform additional tests (different editors / conditions) to do comparative analysis.</p>
+<p>Both source- and aggregate data is easily accessible, you can:</p>
+<ul>
+<li>copy table content as text,</li>
+<li>save chart to <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file (with legend and summary stats),</li>
+<li>export raw data in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> format (for <a href="https://en.wikipedia.org/wiki/LibreOffice_Calc">Calc</a> or <a href="https://www.r-project.org/">R</a>, if you fancy).</li>
+</ul>
+<p>It's possible to merge results either by inserting data from an existing CSV file, or by appending data to a CSV file on saving.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>To make benchmarking possible, correct screen metrics must be detected at the initial step. The program attempts to recognize a custom pattern (5 new dots) in order to determine the following parameters:</p>
+<ul>
+<li>starting position,</li>
+<li>horizontal step,</li>
+<li>background color,</li>
+<li>line length,</li>
+<li>caret type.</li>
+</ul>
+<p>Because there are many editors (and multiple versions of each editor), which looks different on different platforms, and there are many possible color schemes and fonts, the metrics recognition algorithm has to be very flexible. While the program sources contain a great deal of test cases, some glitches are still probable.</p>
+<p>Here's a list of typical problems and corresponding solutions:</p>
+<ul>
+<li>Editor background is non-uniform (gradient, picture) – set solid color background.</li>
+<li>Characters are too low-contrast and obscure – use a crisp color scheme.</li>
+<li>Dot characters merge with the caret – increase font size.</li>
+<li>Editor replaces multiple dots with ellipsis – disable that auto-correction.</li>
+<li>Spaces between dots are uneven – use <a href="https://en.wikipedia.org/wiki/Monospaced_font">monospaced font</a> in the editor.</li>
+<li>Editor has a left panel that melds with the text area – hide the panel.</li>
+</ul>
+<p>Feel free to contribute by creating additional test case images (check <code>/src/test/resources</code> directory for examples).</p>
+<p>Pavel Fatin, <a href="https://pavelfatin.com/">https://pavelfatin.com</a></p>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<style type="text/css">
+
+body {
+  min-width: 200px;
+  max-width: 790px;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700;
+}
+
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+  margin: 0.67em 0;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
+}
+
+h1, h2 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+h2 {
+  padding-bottom: .3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 0 0 2em;
+}
+
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  margin: 0;
+  padding: 0.2em 0;
+}
+
+body > :first-child {
+  margin-top: 0 !important;
+}
+
+body > :last-child {
+  margin-bottom: 0 !important;
+}
+
+p, ul, ol {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+code:before, code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+</style>
