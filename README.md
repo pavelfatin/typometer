@@ -39,8 +39,10 @@ There are two modes of testing available:
 
 To register only essential editor latency, text must be rendered directly to [framebuffer](https://en.wikipedia.org/wiki/Framebuffer), without intermediate image processing that might introduce additional delay. Prefer [stacking window managers](https://en.wikipedia.org/wiki/Stacking_window_manager) to [compositing window managers](https://en.wikipedia.org/wiki/Compositing_window_manager) for the testing purposes, particularly:
 
-* Switch to Classic theme in Windows. [Windows Aero](https://en.wikipedia.org/wiki/Windows_Aero) enforces internal [vertical synchronization](https://en.wikipedia.org/wiki/Analog_television#Vertical_synchronization), which leads to minimum 1 frame lag (about 17 ms for 60 Hz monitor refresh rate) and delay discretization.
+* Switch to Classic theme in Windows. [Windows Aero](https://en.wikipedia.org/wiki/Windows_Aero) enforces internal [vertical synchronization](https://en.wikipedia.org/wiki/Analog_television#Vertical_synchronization), which leads to minimum 1 frame lag (about 17 ms for 60 Hz monitor refresh rate) and delay discretization. It's also possible to disable the compositing directly [in Windows 7](http://www.softwareaudioconsole.com/Tweaking_Windows_7.htm) and [in Windows 8](http://www.rlauncher.com/wiki/index.php?title=Input_Lag_Checklist#Disable_Desktop_Composition_in_Windows_8_and_8.1).
 * Use Linux distributive with lightweight [window manager](https://en.wikipedia.org/wiki/Window_manager), like [Lubuntu](http://lubuntu.net/) ([Openbox](https://en.wikipedia.org/wiki/Openbox)). Complex, 3D-based windows managers might substantially increase system rendering latency, for example, on my hardware, Ubuntu's [Compiz](https://en.wikipedia.org/wiki/Compiz), adds ~10 ms unavoidable lag.
+
+Close all programs that add system-wide keyboard [hooks](https://en.wikipedia.org/wiki/Hooking), as they might process the keyboard events synchronously and affect the results (for example, [Workrave](http://www.workrave.org/) is known to noticeable increase the typing latency).
 
 You may consider switching your machine in a particular hardware mode (power scheme, integrated / discrete graphics, etc.). In power save mode (and on battery), for example, editor responsiveness is usually much lower, so it's possible to detect significant performance glitches which are less frequently observable otherwise.
 
@@ -70,6 +72,16 @@ Both source- and aggregate data is easily accessible, you can:
 * export raw data in [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) format (for [Calc](https://en.wikipedia.org/wiki/LibreOffice_Calc) or [R](https://www.r-project.org/), if you fancy).
 
 It's possible to merge results either by inserting data from an existing CSV file, or by appending data to a CSV file on saving.
+
+## Recipes
+
+Here are a few tips on how you can use the tool to detect performance bottlenecks in text / code editors:
+
+* Check whether number of lines influences the latency. If so, typing might "lag" inside a large file.
+* Check whether editor window size influences the latency. If so, the editor probably does excessive repainting instead of drawing only a newly inserted symbol.
+* Check whether latency depends on horizontal symbol position. Ideally, that correlation should be undetectable.
+* Try to enable highlighting / autocomplete / folding / spellchecker / etc. Those features should be processed asynchronously, without affecting the typing as such.
+* Try to run the test in power-saving mode. Ideally, typing should be handled decently even on less powerful hardware.
 
 ## Troubleshooting
 
