@@ -20,6 +20,16 @@ Java 8 or latter is required to run the program. You can [download Java](https:/
 * Line / bar charts (including comparative ones).
 * Chart image export (with legend).
 
+## Screenshots
+
+Main window:
+
+![Typometer, main window](https://pavelfatin.com/images/typometer/typometer-window.png "Typometer, main window")
+
+Frequency distribution chart:
+
+![Typometer, frequency distribution chart](https://pavelfatin.com/images/typometer/typometer-distribution.png "Typometer, frequency distribution chart")
+
 ## Principle
 
 The program generates OS input events (key presses) and uses screen capture to fully automate the test process.
@@ -82,6 +92,8 @@ Here are a few tips on how you can use the tool to detect performance bottleneck
 * Check whether latency depends on horizontal symbol position. Ideally, that correlation should be undetectable.
 * Try to enable highlighting / autocomplete / folding / spellchecker / etc. Those features should be processed asynchronously, without affecting the typing as such.
 * Try to run the test in power-saving mode. Ideally, typing should be handled decently even on less powerful hardware.
+
+If you're implementing a text / code editor, take a look at the [programming techniques](https://pavelfatin.com/low-latency-painting-in-awt-and-swing/) to significantly reduce the drawing latency.
 
 ## Troubleshooting
 
