@@ -109,6 +109,15 @@
 <li>Line / bar charts (including comparative ones).</li>
 <li>Chart image export (with legend).</li>
 </ul>
+<h2 id="screenshots">Screenshots</h2>
+<p>Main window:</p>
+<figure>
+<img src="https://pavelfatin.com/images/typometer/typometer-window.png" title="Typometer, main window" alt="Typometer, main window" /><figcaption>Typometer, main window</figcaption>
+</figure>
+<p>Frequency distribution chart:</p>
+<figure>
+<img src="https://pavelfatin.com/images/typometer/typometer-distribution.png" title="Typometer, frequency distribution chart" alt="Typometer, frequency distribution chart" /><figcaption>Typometer, frequency distribution chart</figcaption>
+</figure>
 <h2 id="principle">Principle</h2>
 <p>The program generates OS input events (key presses) and uses screen capture to fully automate the test process.</p>
 <p>At first, a predefined pattern (&quot;<code>.....</code>&quot;) is inserted in editor window in order to detect screen metrics (start position, step, background, etc.).</p>
@@ -122,9 +131,10 @@
 <h2 id="usage">Usage</h2>
 <p>To register only essential editor latency, text must be rendered directly to <a href="https://en.wikipedia.org/wiki/Framebuffer">framebuffer</a>, without intermediate image processing that might introduce additional delay. Prefer <a href="https://en.wikipedia.org/wiki/Stacking_window_manager">stacking window managers</a> to <a href="https://en.wikipedia.org/wiki/Compositing_window_manager">compositing window managers</a> for the testing purposes, particularly:</p>
 <ul>
-<li>Switch to Classic theme in Windows. <a href="https://en.wikipedia.org/wiki/Windows_Aero">Windows Aero</a> enforces internal <a href="https://en.wikipedia.org/wiki/Analog_television#Vertical_synchronization">vertical synchronization</a>, which leads to minimum 1 frame lag (about 17 ms for 60 Hz monitor refresh rate) and delay discretization.</li>
+<li>Switch to Classic theme in Windows. <a href="https://en.wikipedia.org/wiki/Windows_Aero">Windows Aero</a> enforces internal <a href="https://en.wikipedia.org/wiki/Analog_television#Vertical_synchronization">vertical synchronization</a>, which leads to minimum 1 frame lag (about 17 ms for 60 Hz monitor refresh rate) and delay discretization. It's also possible to disable the compositing directly <a href="https://web.archive.org/web/20161021060058/http://www.softwareaudioconsole.com/Tweaking_Windows_7.htm">in Windows 7</a> and <a href="http://www.rlauncher.com/wiki/index.php?title=Input_Lag_Checklist#Disable_Desktop_Composition_in_Windows_8_and_8.1">in Windows 8</a>.</li>
 <li>Use Linux distributive with lightweight <a href="https://en.wikipedia.org/wiki/Window_manager">window manager</a>, like <a href="http://lubuntu.net/">Lubuntu</a> (<a href="https://en.wikipedia.org/wiki/Openbox">Openbox</a>). Complex, 3D-based windows managers might substantially increase system rendering latency, for example, on my hardware, Ubuntu's <a href="https://en.wikipedia.org/wiki/Compiz">Compiz</a>, adds ~10 ms unavoidable lag.</li>
 </ul>
+<p>Close all programs that add system-wide keyboard <a href="https://en.wikipedia.org/wiki/Hooking">hooks</a>, as they might process the keyboard events synchronously and affect the results (for example, <a href="http://www.workrave.org/">Workrave</a> is known to noticeable increase the typing latency).</p>
 <p>You may consider switching your machine in a particular hardware mode (power scheme, integrated / discrete graphics, etc.). In power save mode (and on battery), for example, editor responsiveness is usually much lower, so it's possible to detect significant performance glitches which are less frequently observable otherwise.</p>
 <p>Before you start benchmarking, make sure that other applications are not placing noticeable load on your system. It's up to you whether to &quot;warm up&quot; <a href="https://en.wikipedia.org/wiki/Virtual_machine#Process_virtual_machines">VM</a>-based editors, so they can pre-compile performance-critical parts of their code before proceeding.</p>
 <p>If possible, enable non-block caret (i. e. underline / vertical bar instead of rectangle) in editor. This might increase measurement accuracy.</p>
@@ -148,6 +158,16 @@
 <li>export raw data in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> format (for <a href="https://en.wikipedia.org/wiki/LibreOffice_Calc">Calc</a> or <a href="https://www.r-project.org/">R</a>, if you fancy).</li>
 </ul>
 <p>It's possible to merge results either by inserting data from an existing CSV file, or by appending data to a CSV file on saving.</p>
+<h2 id="recipes">Recipes</h2>
+<p>Here are a few tips on how you can use the tool to detect performance bottlenecks in text / code editors:</p>
+<ul>
+<li>Check whether number of lines influences the latency. If so, typing might &quot;lag&quot; inside a large file.</li>
+<li>Check whether editor window size influences the latency. If so, the editor probably does excessive repainting instead of drawing only a newly inserted symbol.</li>
+<li>Check whether latency depends on horizontal symbol position. Ideally, that correlation should be undetectable.</li>
+<li>Try to enable highlighting / autocomplete / folding / spellchecker / etc. Those features should be processed asynchronously, without affecting the typing as such.</li>
+<li>Try to run the test in power-saving mode. Ideally, typing should be handled decently even on less powerful hardware.</li>
+</ul>
+<p>If you're implementing a text / code editor, take a look at the <a href="https://pavelfatin.com/low-latency-painting-in-awt-and-swing/">programming techniques</a> to significantly reduce the drawing latency.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>To make benchmarking possible, correct screen metrics must be detected at the initial step. The program attempts to recognize a custom pattern (5 new dots) in order to determine the following parameters:</p>
 <ul>
