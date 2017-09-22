@@ -6,7 +6,7 @@ Editor latency is delay between an input event and a corresponding screen update
 
 Check my article [Typing with pleasure](https://pavelfatin.com/typing-with-pleasure) to learn more about editor latency and its effects on typing performance.
 
-Download: [typometer-1.0-bin.zip](https://github.com/pavelfatin/typometer/releases/download/v1.0.0/typometer-1.0-bin.zip) (0.5 MB)
+Download: [typometer-1.0.1-bin.zip](https://github.com/pavelfatin/typometer/releases/download/v1.0.1/typometer-1.0.1-bin.zip) (0.5 MB)
 
 Java 8 or latter is required to run the program. You can [download Java](https://java.com/download) from the official site.
 
