@@ -115,6 +115,7 @@ Here's a list of typical problems and corresponding solutions:
 * Editor replaces multiple dots with ellipsis – disable that auto-correction.
 * Spaces between dots are uneven – use [monospaced font](https://en.wikipedia.org/wiki/Monospaced_font) in the editor.
 * Editor has a left panel that melds with the text area – hide the panel.
+* Inputting dots causes changes other than showing the new dot  – disable these functions, or change the color of the added text to that of the background if possible.
 
 Feel free to contribute by creating additional test case images (check `/src/test/resources` directory for examples).
 
