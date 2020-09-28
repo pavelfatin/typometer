@@ -26,7 +26,7 @@ public interface ScreenAccessor {
     void dispose();
 
     static boolean isNativeApiSupported() {
-        return Platform.isWindows() || Platform.isLinux();
+        return Platform.isWindows() || Platform.isLinux() || Platform.isFreeBSD();
     }
 
     static ScreenAccessor create(boolean isNative) {
@@ -34,7 +34,7 @@ public interface ScreenAccessor {
             if (Platform.isWindows()) {
                 return new WindowsScreenAccessor();
             }
-            if (Platform.isLinux()) {
+            if (Platform.isLinux() || Platform.isFreeBSD()) {
                 return new LinuxScreenAccessor();
             }
         }
