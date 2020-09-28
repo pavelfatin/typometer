@@ -17,7 +17,7 @@
         <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
-            <version>4.2.0</version>
+            <version>5.5.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -60,6 +60,8 @@
                                 <include>com/sun/jna/win32/*</include>
                                 <include>com/sun/jna/win32-x86/*</include>
                                 <include>com/sun/jna/win32-x86-64/*</include>
+                                <include>com/sun/jna/freebsd-x86/*</include>
+                                <include>com/sun/jna/freebsd-x86-64/*</include>
                             </includes>
                         </filter>
                     </filters>
